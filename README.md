@@ -39,6 +39,16 @@ Evaluar y comparar el rendimiento de diferentes modelos para la **detección aut
 | **Robertuito**  | 0.86     | 0.85               | Mejor modelo, especializado en emociones en español. |
 
 ---
+## Matrices de confusión
+La matriz de confusión del modelo LSTM revela que las clases con mayor cantidad de datos, como *others*, *joy* y *sadness*, alcanzan un rendimiento aceptable con 437, 201 y 130 aciertos respectivamente, aunque presentan confusiones relevantes: *others* se confunde en 200 casos con *joy*, esta última en más de 100 casos con *others* y en 25 con *sadness*, mientras que *anger*, con 63 aciertos, suele confundirse con *sadness* (40 casos) y *others* (23 casos). En el caso de las clases minoritarias, el desempeño es muy bajo: *fear* apenas logra 6 aciertos y 9 confusiones en *others*, *disgust* también 6 aciertos pero dispersos en varias clases, y *surprise* solo 13 aciertos con 34 errores hacia *others*. En conjunto, esto muestra que el modelo funciona razonablemente bien en las clases dominantes, pero fracasa en distinguir emociones minoritarias y confunde emociones cercanas semánticamente, lo que explica su bajo rendimiento general (\~50% de accuracy) y confirma sus limitaciones frente al desbalance de datos.
+<img width="785" height="624" alt="image" src="https://github.com/user-attachments/assets/c83daf4b-0d49-4683-ac6e-4541215fb0b1" />
+
+La matriz de confusión muestra que tu modelo DistilBERT fine-tuneado tiene un buen desempeño en clases mayoritarias como others, joy y sadness, pero presenta un fuerte sesgo hacia la clase others, absorbiendo muchos errores de las demás categorías. Emociones minoritarias como disgust, fear y surprise casi no son reconocidas, lo que refleja un claro desbalance en el dataset. En general, el modelo distingue razonablemente bien emociones frecuentes, pero necesita estrategias como balanceo de datos, ponderación de clases o data augmentation para mejorar el reconocimiento de las clases menos representadas.
+<img width="554" height="468" alt="image" src="https://github.com/user-attachments/assets/51a010cb-f176-454f-9dc2-21d75f715c36" />
+
+En esta tercera matriz de confusión, del modelo pysentimiento/robertuito-emotion-analysis entrenado en español, se observa un rendimiento más equilibrado que en tu modelo DistilBERT fine-tuneado y en el LSTM. La clase others sigue siendo la más dominante (3736 aciertos), pero a diferencia del anterior, aquí las emociones principales como joy (1562), sadness (876) y anger (757) se reconocen con mucha mayor precisión y menos confusión hacia others. Además, emociones difíciles como surprise (220), disgust (132) y fear (75) también son identificadas, aunque con menor volumen de datos. En general, este modelo presenta mejor capacidad para distinguir entre emociones, mostrando menos sesgo hacia la clase mayoritaria y una cobertura más amplia de las categorías minoritarias.
+<img width="751" height="590" alt="image" src="https://github.com/user-attachments/assets/fe9ef47f-fa4c-4cc2-8cd9-b64b38227061" />
+
 
 ## 🔍 Conclusiones  
 
