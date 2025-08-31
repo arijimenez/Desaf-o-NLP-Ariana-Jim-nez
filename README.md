@@ -48,6 +48,6 @@ Evaluar y comparar el rendimiento de diferentes modelos para la **detección aut
 
 ---
 
-## 📂 Puede revisar el codigo en el siguiente enlace:
+## 📂 Puede revisar el código en el siguiente enlace:
 https://colab.research.google.com/drive/1UnVamXla36SLW6J9ciOkfXipQI2AmuDi?usp=sharing  
 
